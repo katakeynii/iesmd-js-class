@@ -2,7 +2,7 @@
 // DRY = Do Not Repeat Yourself 
 
 
-//  PARTIE 1 : Passer en parametre une fonction
+// ##### PARTIE 1 : Passer en parametre une fonction
 // function somme(a, b){
 // 	return a + b;
 // }
@@ -42,3 +42,59 @@
 
 // ajout(10, function(){})
 // multiple(10, function(){})
+
+
+
+// ##### PARTIE 1 : Retourner une fonction
+
+// function parler(){
+// 	return function blabla(){
+// 		console.log("Bonjour je parle !!!")
+// 	}
+// }
+
+// result = parler();
+// console.log("J'accede a la base")
+// console.log("Je consulte un webservice")
+// console.log(result)
+// result()
+
+
+// function calculer(prix_unit){
+// 	return function (nb){
+// 			return nb * prix_unit
+// 	}
+// }
+
+// result = calculer(2500)
+// console.log("J'accede a la base")
+// console.log("Je consulte un webservice")
+// var nombre = 3
+
+// total = result(nombre)
+// console.log("Total = " + total + " Fcfa")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
