@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cours JS</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.titre{
+			display: block;
+			padding: 20px;
+			margin: 10px;
+			color: white;
+			font-size: 2.5em;
+
+		}
+		#titre-1{
+			background: red;
+		}
+		#titre-2 {
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+
+	<h1 >Bonjour mes amis ! </h1>
+
+		<div class="titre" id="titre-1" onclick="changerTitre(this)" > Titre 1</div>
+		<div class="titre" id="titre-2" > Titre 2</div>
+
+		<div id="presentation" class="definition" >
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+			
+		</div>
+
+		
+
+<a href="http://"> Google</a>
+
+
+
+	<script type="text/javascript">
+
+		// ---> ajouter un element noeud
+		// var lien = document.createElement("a")
+		// var text = document.createTextNode("Cliquez moi !")
+		// lien.appendChild(text)
+		// lien.innerHTML = "<b>Clique sur moi<b>"
+		// document.body.appendChild(lien)
+
+//		// -> Récuperer un élément 
+// 		var listDiv = document.getElementsByTagName("div")
+// 		console.log(listDiv)
+
+// 		var listClassTitre = document.getElementsByClassName("titre")
+// 		console.log("====> liste des classes")
+// 		console.log(listClassTitre)
+
+// 		var titre2 = document.getElementById("titre-2")
+// 		console.log("====> Afficher l'element titre 2")
+// 		console.log(titre2)
+
+// 		titre2.innerHTML = "Chapitre 1"
+
+
+// 		document.getElementById("titre-1").innerHTML = "Introduction"
+
+// // // ----> 
+// 		var google = document.createElement("a")
+// 		google.innerHTML = " Cliquez pour allez sur google.com"
+// 		google.href = "http://google.com"
+
+
+// // 		document.getElementById("titre-1").appendChild(google)
+
+
+// 	function changerTitre(element){
+// 		element.innerHTML = 'Vous avez cliqué'
+// 	}
+
+// 	document.getElementById("titre-2").onclick = function(event){
+// 		console.log("text", event)
+// 		event.target.innerHTML = "Chop me ! "
+// 	}
+
+	var titre1 = document.getElementById("titre-1")
+	titre1.onmouseover = function(ev){
+		ev.target.innerHTML = "Tu es passé dessus"
+	}
+	titre1.onmouseout = function(ev){
+		ev.target.innerHTML = "Titre 1"
+	}
+
+	</script>
+
+</body>
+</html>
