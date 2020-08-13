@@ -8,8 +8,8 @@
 			display: block;
 			padding: 20px;
 			margin: 10px;
-			color: white;
-			font-size: 2.5em;
+			color: #000;
+			font-size: 40px; 
 
 		}
 		#titre-1{
@@ -18,14 +18,25 @@
 		#titre-2 {
 			background: blue;
 		}
+		#introduction{
+			background: yellow;
+		}
+		.gris{
+			background: gray !important;
+			border: 5px solid green;
+		}
 	</style>
 </head>
 <body>
 
 	<h1 >Bonjour mes amis ! </h1>
 
-		<div class="titre" id="titre-1" onclick="changerTitre(this)" > Titre 1</div>
+		<div class="titre" id="introduction" >  INTRODUCTION </div>
+		<div class="titre" id="titre-1" > Titre 1</div>
 		<div class="titre" id="titre-2" > Titre 2</div>
+
+		<a class="titre" href="http://google.com" id="link"> Va sur Google </a>
+		<input type="text" name="" id="recherche">
 
 		<div id="presentation" class="definition" >
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -34,11 +45,10 @@
 			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
 			
 		</div>
 
-		
+		<div id="list-articles"></div>
 
 <a href="http://"> Google</a>
 
@@ -83,18 +93,108 @@
 // 		element.innerHTML = 'Vous avez cliqué'
 // 	}
 
-// 	document.getElementById("titre-2").onclick = function(event){
-// 		console.log("text", event)
-// 		event.target.innerHTML = "Chop me ! "
-// 	}
+	// document.getElementById("titre-2").onclick = function(event){
+	// 	console.log("text", event)
+	// 	event.target.innerHTML = "You clicked on me ! "
+	// }
 
-	var titre1 = document.getElementById("titre-1")
-	titre1.onmouseover = function(ev){
-		ev.target.innerHTML = "Tu es passé dessus"
+	var titre2 = document.getElementById("titre-2");
+
+	titre2.onmouseover = function(event){
+		console.log("text", event)
+		event.target.innerHTML = "Mouse over on me ! "
+		event.target.classList.add("gris")
 	}
-	titre1.onmouseout = function(ev){
-		ev.target.innerHTML = "Titre 1"
+	titre2.addEventListener('mouseover', function(event){
+		console.log("text", event)
+		event.target.innerHTML = "Mouse over on me ! "
+		event.target.classList.add("gris")
+	})
+	titre2.addEventListener('mouseover', function(event){
+		console.log("Dire à mes amis j'ai survoler le div")
+	})
+
+	titre2.addEventListener('mouseover', function(event){
+		console.log("Dire à mes parents j'ai survoler le div")
+	})
+
+	document.getElementById("titre-2").onmouseout = function(event){
+		console.log("text", event)
+		event.target.innerHTML = "Titre 2"
+		event.target.classList.remove("gris")
 	}
+
+	// var titre1 = document.getElementById("titre-1")
+	// titre1.onmouseover = function(event){
+	// 	event.target.innerHTML = "Tu es passé dessus"
+	// }
+	// titre1.onmouseout = function(ev){
+	// 	ev.target.innerHTML = "Titre 1"
+	// }
+
+
+	// 	var input = document.getElementById("recherche")
+	// 	input.onkeydown = function(e){
+	// 		console.log(e.target.value)
+	// 	}
+
+	// ---> Event Listner
+	// var titre1 = document.getElementById("titre-1")
+
+	// titre1.addEventListener('click', function(){
+	// 	// ---> La logique de ce qu'il faut au clique 
+	// 	console.log("Bonjour ! ")
+	// })
+
+
+	// var link =	document.getElementById("link")
+	// link.addEventListener("click", function(event){
+	// 	event.preventDefault()
+	// 	console.log("Bonjour")
+	// 	var pays = prompt("Donnez votre pays")
+	// 	console.log(pays)
+	// 	if(pays == 'senegal'){
+	// 		window.location.href = "http://seneweb.com"
+	// 	}
+	// 	if(pays == 'france'){
+	// 		window.location.href = "http://france24.com"
+	// 	}
+
+	// })
+
+	// fataya = new Promise(function(success, failed){
+	//   setTimeout(function(){
+	//       // success("Voici ce que je t'avais promis")
+	//       try{
+	//       	// acceder à la base de données
+	// 	      throw "Je n'ai pas pu te donner ce que je t'avais promis "
+	//       }catch (e){
+	//       	console.log("Yooo! On vient de capter une erreur ! On va verifier ! ")
+	//       	failed('on une errreur !')
+	//       }
+	//   }, 30000)
+
+	// }).then(function(chosePromis){
+	//     console.log(chosePromis)
+	// }).catch(function(error){
+	// 	console.log("On a vu que ta promesse n'a pas été tenu mais on va gerer avec l'utilisateur")
+	// })
+	var postUrl = "https://jsonplaceholder.typicode.com/posts"
+		var userPromise = fetch(postUrl)
+		userPromise.then((reponse) => reponse.json())
+		.then(function(articles){
+		    console.log(articles)
+	    	var listElement = document.getElementById("list-articles")
+		    articles.forEach(function(article){
+		    	titre = document.createElement("h2")
+		    	titre.innerHTML = article.title
+		    	contenu = document.createElement("p")
+		    	contenu.innerHTML = article.body
+
+		    	listElement.appendChild(titre)
+		    	listElement.appendChild(contenu)
+		    })
+		})
 
 	</script>
 
